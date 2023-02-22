@@ -1,0 +1,56 @@
+body {
+    background-color: #F9FAFC;
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #FFCDD9;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  
+  .article-title {
+    color: #1300C1;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3;
+  }
+  
+  .article-metadata a:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+
+
+  .help-button {
+    background-color: #9AA8FF;
+    color: #1300C1;
+  }
+
+  .help-background {
+    background-color: #FFCDD9;
+  }
+
