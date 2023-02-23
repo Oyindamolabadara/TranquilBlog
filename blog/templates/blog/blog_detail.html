@@ -34,18 +34,29 @@
             <h3 class="article-title">{{ post.title }}</h3>
             <p class="article-content">{{ post.content|safe }}</p>
 
+
             <!-- Like/Unlike Post  -->
             <div class="row">
                 <div class="col-1">
-                    <!-- The number of likes goes before the closing strong tag -->
-                    <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
-                </div>
-                <div class="col-1">
-                    {% with comments.count as total_comments %}
-                    <strong class="text-secondary"><i class="far fa-comments"></i>
-                        <!-- Our total_comments variable goes before the closing strong tag -->
-                        {{ total_comments }}</strong>
-                    {% endwith %}
+                    <strong>
+                        {% if user.is_authenticated %}
+                        <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if liked %}
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}"
+                                class="btn-like btn btn-primary btn-sm mt-1 mb-1">Unlike</button>
+                            {% else %}
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}"
+                                class="btn btn-primary btn-sm mt-1 mb-1">Like</button>
+                            {% endif %}
+                        </form>
+                        {% else %}
+                        <button type="submit" name="blogpost_id" value="{{post.slug}}"
+                                class="btn btn-primary btn-sm mt-1 mb-1">Like</button>
+                        {% endif %}
+                        <!-- The number of likes goes before the closing strong tag -->
+                        <span class="text-secondary mb-1">{{ post.number_of_likes }} </span>
+                    </strong>
                 </div>
             </div>
         </div>
@@ -54,10 +65,17 @@
             <!-- Comments  -->
             <h3 class="article-title">Comments</h3>
             <div>
+                {% with comments.count as total_comments %}
+                <strong class="text-secondary"><i class="far fa-comments"></i> Total comments -
+                    <!-- Our total_comments variable goes before the closing strong tag -->
+                    {{ total_comments }}</strong>
+                {% endwith %}
+            </div>
+            <div>
                 <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
+                <div class="comments">
+                    <p class="font-weight-bold mt-3">
                         <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ comment.name }}
                         <span class=" text-muted font-weight-normal">
