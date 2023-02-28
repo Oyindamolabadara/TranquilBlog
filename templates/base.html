@@ -25,6 +25,7 @@
     {% endblock %}
 
     {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
     {% endblock %}
 
     <title>TranquilBlog {% block extra_title %}{% endblock %}</title>
@@ -51,7 +52,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New Post</a>
+                        <a class="nav-link" href="{% url 'post_create' %}">New Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Profile</a>
@@ -68,27 +69,23 @@
                     </li>
                     {% endif %}
                 </ul>
+                <span>
+                    <a class="list-group-item article-title text-center help-button"
+                        href="https://www.mind.org.uk/information-support/guides-to-support-and-services/crisis-services/helplines-listening-services/"
+                        target="_blank">Get help now</a>
+                </span>
             </div>
         </div>
     </nav>
 
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <!-- {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %} -->
-                {% block content %}
-                <!-- Content Goes here -->
-                {% endblock %}
-            </div>
-        </div>
-    </main>
+    <h4>
 
+    </h4>
+    <main>
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+    </main>
     <!-- Footer -->
 </body>
 

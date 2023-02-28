@@ -9,60 +9,47 @@
 
 <div class="overlay"></div>
 
-<div class="col-md-12">
-    {% for post in post_list %}
-    <article class="media content-section">
-        <div class="media-body">
-            <div class="image-container">
-                {% if "placeholder" in post.featured_image.url %}
-                <img class="card-img-top"
-                    src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1677016174/static/media/blog_image.c6d0c57b0346.jpg">
-                {% else %}
-                <img class="card-img-top" src=" {{ post.featured_image.url }}">
-                {% endif %}
-            </div>
-            <div class="article-metadata">
-                <a class="mr-2">{{ post.author }}</a>
-                <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
-            </div>
-            <h2><a href="{% url 'post_detail' post.slug %}" class="article-title">{{ post.title }}</a></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 left">
+            {% for post in post_list %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="image-container">
+                        {% if "placeholder" in post.featured_image.url %}
+                        <img class="card-img-top"
+                            src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1677016174/static/media/blog_image.c6d0c57b0346.jpg">
+                        {% else %}
+                        <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                        {% endif %}
+                    </div>
+                    <div class="article-metadata">
+                        <a class="mr-2">{{ post.author }}</a>
+                        <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
+                    </div>
+                    <h2><a href="{% url 'post_detail' post.slug %}" class="article-title">{{ post.title }}</a></h2>
+                </div>
+            </article>
+            {% endfor %}
         </div>
-    </article>
-</div>
-    {% endfor %}
-<div class="col-md-6">
-    <div class="content-section help-background">
-        <h4>
-            <a class="list-group-item article-title text-center help-button"
-                href="https://www.mind.org.uk/information-support/guides-to-support-and-services/crisis-services/helplines-listening-services/"
-                target="_blank">Get help now</a>
-        </h4>
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-light">"There is a crack in everything, that’s how the light gets
-                in." ― Leonard Cohen</li>
-            <li class="list-group-item list-group-item-light">"You are not your illness. You have an individual story to
-                tell. You have a name, a history, a personality. Staying yourself is part of the battle." — Julian
-                Seifter
-            </li>
-            <li class="list-group-item list-group-item-light">"There is no normal life that is free of pain. It's the
-                very wrestling with our problems that can be the impetus for our growth." — Fred Rogers</li>
-            <li class="list-group-item list-group-item-light">"Mental health problems don’t define who you are. They are
-                something you experience. You walk in the rain and you feel the rain, but you are not the rain." — Matt
-                Haig</li>
-            <li class="list-group-item list-group-item-light">"You don’t have to be positive all the time. It’s
-                perfectly okay to feel sad, angry, annoyed, frustrated, scared and anxious. Having feelings doesn’t make
-                you a negative person. It makes you human." — Lori Deschene</li>
-        </ul>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
-</div>
+
 <!--Page Navigation -->
 {% if is_paginated %}
-{% if page_obj.has_previous %}
-<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+  <nav aria-label="Page navigation container"></nav>
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">&laquo; PREV </a></li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary"> NEXT &raquo;</a></li>
+    {% endif %}
+  </ul>
+  </nav>
+</div>
 {% endif %}
-{% if page_obj.has_next %}
-<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-{% endif %}
-{% endif %}
-
+</div>
 {% endblock %}
+
+

@@ -1,6 +1,6 @@
-body {
+/* body {
     background-color: #F9FAFC;
-}
+} */
 
 .content-section {
     background: #ffffff;
@@ -54,7 +54,10 @@ body {
     background-color: #FFCDD9;
   }
 
-  /* .form-bg {
-    background-color: #71F5C4;
+  .form-bg {
+    background-color: #FFCDD9;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-bottom: 20px;
   }
-   */
+  
