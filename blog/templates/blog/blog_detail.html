@@ -10,105 +10,105 @@
 <div class="overlay"></div>
 
 <div class="container col-md-8 d-flex align-items-center justify-content-center my-3">
-<article class="media content-section container-bg">
-    <div class="image-container">
-        {% if "placeholder" in post.featured_image.url %}
-        <img class="card-img-top"
-            src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1677098017/static/media/mental_health.80775316a494.jpg">
-        {% else %}
-        <img class="card-img-top" src=" {{ post.featured_image.url }}">
-        {% endif %}
-    </div>
-    <div class="media-body mt-4">
-        <div class="content-section">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">{{ post.author }}</a>
-                <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
-                <!-- {% if object.author == user %}
-      <div>
-        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
-        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
-      </div>
-      {% endif %} -->
-            </div>
-            <h3 class="article-title">{{ post.title }}</h3>
-            <p class="article-content">{{ post.content|safe }}</p>
+    <article class="media content-section container-bg">
+        <div class="image-container">
+            {% if "placeholder" in post.featured_image.url %}
+            <img class="card-img-top"
+                src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1677098017/static/media/mental_health.80775316a494.jpg">
+            {% else %}
+            <img class="card-img-top" src=" {{ post.featured_image.url }}">
+            {% endif %}
+        </div>
+        <div class="media-body mt-4">
+            <div class="content-section">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
+                    {% if post.author == user %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-3 mb-3"
+                            href="{% url 'post_update' post.slug %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-3 mb-3" href="{% url 'post_delete' post.slug %}">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+                <h3 class="article-title">{{ post.title }}</h3>
+                <p class="article-content">{{ post.content|safe }}</p>
 
-
-            <!-- Like/Unlike Post  -->
-            <div class="row">
-                <div class="col-1">
-                    <strong>
-                        {% if user.is_authenticated %}
-                        <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
-                            {% csrf_token %}
-                            {% if liked %}
-                            <button type="submit" name="blogpost_id" value="{{post.slug}}"
-                                class="btn-like btn btn-primary btn-sm mt-1 mb-1">Unlike</button>
+                <!-- Like/Unlike Post  -->
+                <div class="row">
+                    <div class="col-1">
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}"
+                                    class="btn-like btn btn-primary btn-sm mt-1 mb-1">Unlike</button>
+                                {% else %}
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}"
+                                    class="btn btn-primary btn-sm mt-1 mb-1">Like</button>
+                                {% endif %}
+                            </form>
                             {% else %}
                             <button type="submit" name="blogpost_id" value="{{post.slug}}"
                                 class="btn btn-primary btn-sm mt-1 mb-1">Like</button>
                             {% endif %}
-                        </form>
-                        {% else %}
-                        <button type="submit" name="blogpost_id" value="{{post.slug}}"
-                                class="btn btn-primary btn-sm mt-1 mb-1">Like</button>
-                        {% endif %}
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <span class="text-secondary mb-1">{{ post.number_of_likes }} </span>
-                    </strong>
+                            <!-- The number of likes goes before the closing strong tag -->
+                            <span class="text-secondary mb-1">{{ post.number_of_likes }} </span>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <!-- Comments  -->
+                <h3 class="article-title">Comments</h3>
+                <div>
+                    {% with comments.count as total_comments %}
+                    <strong class="text-secondary"><i class="far fa-comments"></i> Total comments -
+                        <!-- Our total_comments variable goes before the closing strong tag -->
+                        {{ total_comments }}</strong>
+                    {% endwith %}
+                </div>
+                <div>
+                    <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                    {% for comment in comments %}
+                    <div class="comments">
+                        <p class="font-weight-bold mt-3">
+                            <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                            {{ comment.name }}
+                            <span class=" text-muted font-weight-normal">
+                                <!-- The comment's created date goes here -->
+                                {{ comment.created_on }}
+                            </span> wrote:
+                        </p>
+                        <!-- The body of the comment goes before the | -->
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    <!-- Our for loop ends here -->
+                    {% endfor %}
+                </div>
+                <div>
+                    {% if commented %}
+                    <div class="alert alert-success" role="alert">
+                        Your comment is awaiting approval
+                    </div>
+                    {% else %}
+                    {% if user.is_authenticated %}
+
+                    <h3 class="article-title">Leave a comment</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="post" style="margin-top: 1.3em;">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>
-
-        <div class="content-section">
-            <!-- Comments  -->
-            <h3 class="article-title">Comments</h3>
-            <div>
-                {% with comments.count as total_comments %}
-                <strong class="text-secondary"><i class="far fa-comments"></i> Total comments -
-                    <!-- Our total_comments variable goes before the closing strong tag -->
-                    {{ total_comments }}</strong>
-                {% endwith %}
-            </div>
-            <div>
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-                {% for comment in comments %}
-                <div class="comments">
-                    <p class="font-weight-bold mt-3">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
-                    <!-- The body of the comment goes before the | -->
-                    {{ comment.body | linebreaks }}
-                </div>
-                <!-- Our for loop ends here -->
-                {% endfor %}
-            </div>
-            <div>
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
-                {% else %}
-                {% if user.is_authenticated %}
-
-                <h3 class="article-title">Leave a comment</h3>
-                <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                {% endif %}
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</article>
+    </article>
 </div>
 {% endblock content %}

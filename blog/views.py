@@ -78,12 +78,28 @@ class PostLike(View):
 
 
 class PostCreate(generic.CreateView):
-    
+
     model = Post
     template_name = "blog/add_blog.html"
+    form_class = PostForm
+
+    def get_success_url(self):
+        return reverse('blog_home')
+
+
+class PostUpdate(generic.UpdateView):
+    
+    model = Post
+    template_name = "blog/update_blog.html"
     form_class = PostForm
     
     def get_success_url(self):
         return reverse('blog_home')
-   
+
+class PostDelete(generic.DeleteView):
     
+    model = Post
+    template_name = "blog/delete_blog.html"
+    
+    def get_success_url(self):
+        return reverse('blog_home')
