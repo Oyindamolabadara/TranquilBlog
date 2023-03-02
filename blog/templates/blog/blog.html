@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cloudinary %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
@@ -20,10 +21,11 @@
                         <img class="card-img-top"
                             src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1677016174/static/media/blog_image.c6d0c57b0346.jpg">
                         {% else %}
-                        <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                        <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }} Image">
                         {% endif %}
                     </div>
                     <div class="article-metadata">
+                        <!-- <img class="rounded-circle article-img" src="{{ post.author.profile.featured_image.url }}"> -->
                         <a class="mr-2">{{ post.author }}</a>
                         <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
                     </div>

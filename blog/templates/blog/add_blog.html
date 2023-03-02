@@ -1,6 +1,6 @@
 {% extends "base.html" %}{% block content %}
 {% load static %}
-
+{% load cloudinary %}
 {% load crispy_forms_tags %}
 
 {% block extra_css %}
@@ -9,7 +9,7 @@
 
 <div class="overlay"></div>
 <div class="container d-flex align-items-center justify-content-center">
-    <form method="POST" class="form-bg">
+    <form enctype="multipart/form-data" method="POST" class="form-bg">
         {% csrf_token %}
         <fieldset class="form-group">
             {{ form | crispy }}
