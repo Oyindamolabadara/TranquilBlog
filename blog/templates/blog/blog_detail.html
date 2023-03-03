@@ -23,7 +23,7 @@
         <div class="media-body mt-4">
             <div class="content-section">
                 <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <a class="mr-2" href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
                     <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
                     {% if post.author == user %}
                     <div>
@@ -38,7 +38,7 @@
 
                 <!-- Like/Unlike Post  -->
                 <div class="row">
-                    <div class="col-1">
+                    <div>
                         <strong>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
@@ -55,9 +55,9 @@
                             <button type="submit" name="blogpost_id" value="{{post.slug}}"
                                 class="btn btn-primary btn-sm mt-1 mb-1">Like</button>
                             {% endif %}
-                            <!-- The number of likes goes before the closing strong tag -->
-                            <span class="text-secondary mb-1">{{ post.number_of_likes }} </span>
                         </strong>
+                         <!-- The number of likes goes before the closing strong tag -->
+                         <span class="text-secondary mb-1"><i class="far fa-thumbs-up"></i></i> Total likes - {{ post.number_of_likes }} </span>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 from .models import Post
 from .forms import CommentForm, PostForm
 
@@ -10,6 +11,17 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "blog/blog.html"
     paginate_by = 3
+
+
+class UserPostList(generic.ListView):
+    model = Post
+    template_name = 'blog/user_posts.html'  
+    context_object_name = 'posts'
+    paginate_by = 3
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by("-created_on")
 
 class PostDetail(View):
 
