@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from .models import Post
 from .forms import CommentForm, PostForm
@@ -22,6 +24,7 @@ class UserPostList(generic.ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by("-created_on")
+
 
 class PostDetail(View):
 
@@ -61,6 +64,8 @@ class PostDetail(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
+            messages.success(request, """
+            Your comment was sent successfully and is awaiting approval!""")
         else:
             comment_form = CommentForm()
 
@@ -78,18 +83,20 @@ class PostDetail(View):
 
 
 class PostLike(View):
-    
+
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
+            messages.success(request, 'You have unliked this post.')
         else:
             post.likes.add(request.user)
+            messages.success(request, 'You have liked this post. Thanks!')
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class PostCreate(generic.CreateView):
+class PostCreate(SuccessMessageMixin, generic.CreateView):
 
     model = Post
     template_name = "blog/add_blog.html"
@@ -97,21 +104,30 @@ class PostCreate(generic.CreateView):
 
     def get_success_url(self):
         return reverse('blog_home')
+    success_message = ("""
+            Your post was sent successfully and is awaiting publication!""")
 
 
-class PostUpdate(generic.UpdateView):
-    
+class PostUpdate(SuccessMessageMixin, generic.UpdateView):
+
     model = Post
     template_name = "blog/update_blog.html"
     form_class = PostForm
-    
+
     def get_success_url(self):
         return reverse('blog_home')
+    success_message = 'Your post was successfully updated!'
 
-class PostDelete(generic.DeleteView):
-    
+
+class PostDelete(SuccessMessageMixin, generic.DeleteView):
+
     model = Post
     template_name = "blog/delete_blog.html"
-    
+
     def get_success_url(self):
         return reverse('blog_home')
+    success_message = 'Your post was successfully deleted!'
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(PostDelete, self).delete(request, *args, **kwargs)
