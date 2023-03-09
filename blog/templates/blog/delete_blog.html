@@ -8,17 +8,23 @@
 {% endblock %}
 
 <div class="overlay"></div>
-<div class="container d-flex align-items-center justify-content-center my-3">
-    <form method="POST" class="form-bg">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-3 article-title">Delete Post</legend>
-            <h2>Are you sure you want to delete the post "{{ post.title }}"?</h2>
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-danger" type="submit">Yes, Delete</button>
-            <a class="btn btn-secondary" href="{% url 'post_detail' post.slug %}">Cancel</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 left">
+            <form method="POST" class="form-bg">
+                {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-3 article-title">Delete Post</legend>
+                        <h2>Are you sure you want to delete the post "{{ post.title }}"?</h2>
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-danger" type="submit">Yes, Delete</button>
+                        <a class="btn btn-secondary" href="{% url 'post_detail' post.slug %}">Cancel</a>
+                    </div>
+            </form>
         </div>
-    </form>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
 </div>
 {% endblock content %}

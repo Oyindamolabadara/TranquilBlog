@@ -8,16 +8,22 @@
 {% endblock %}
 
 <div class="overlay"></div>
-<div class="container d-flex align-items-center justify-content-center my-3">
-    <form method="POST" class="form-bg">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-3 article-title">Update Post</legend>
-            {{ form | crispy }}
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit">Update</button>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 left">
+            <form method="POST" class="form-bg">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-3 article-title">Update Post</legend>
+                    {{ form | crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+            </form>
         </div>
-    </form>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
 </div>
 {% endblock content %}
