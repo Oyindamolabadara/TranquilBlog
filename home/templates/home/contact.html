@@ -1,0 +1,54 @@
+{% extends "base.html" %}{% block content %}
+{% load static %}
+{% load cloudinary %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock %}
+
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 left">
+            <div class="container container-bg p-4">
+                <form method="POST">
+                    <legend class="border-bottom mb-4 article-title">Contact Us</legend>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="nameInput">First Name *</label>
+                        <input id="nameInput" type="text" name="first_name" class="form-control form-input mt-2"
+                            Placeholder="First Name" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="nameInput">Last Name *</label>
+                        <input id="nameInput" type="text" name="last_name" class="form-control form-input mt-2"
+                            Placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="exampleFormControlEmail">Email address *</label>
+                        <input type="email_address" name="email_address" class="form-control mt-3" id="exampleFormControlEmail"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="subjectInput">Subject</label>
+                        <input id="subjectInput" type="text" name="subject" class="form-control form-input mt-2"
+                            Placeholder="Subject">
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="exampleFormControlTextarea1">Message *</label>
+                        <textarea class="form-control mt-2" name="message" id="exampleFormControlTextarea1" rows="6"
+                            placeholder="How can we help?"></textarea>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" id="submit-button" class="btn btn-primary mb-3">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
+</div>
+{% endblock content %}
