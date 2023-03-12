@@ -11,7 +11,11 @@
           <div class="container container-bg">
             <div class="media content-section container-bg">
               <div class="image-container">
+                {% if  user.profile.featured_image %}
                 <img class="rounded-circle account-img" src="{{ user.profile.featured_image.url }}">
+                {% else %}
+                <img class="rounded-circle account-img" src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1678653410/static/media/profile_picture.d1ea125ff9ae.jpg">
+                {% endif %}
                 <div class="media-body">
                   <h2 class="account-heading article-title">{{ user.username }}</h2>
                   <p class="text-secondary">{{ user.email }}</p>
