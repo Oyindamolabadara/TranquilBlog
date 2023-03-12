@@ -1,14 +1,45 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cloudinary %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
 {% endblock %}
 
 {% block content %}
 
+<div>
+  <img class="card-img-top"
+    src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1677016176/static/media/landing_image.85700e6c575a.jpg">
+</div>
+
+<div class="container">
+  <div class="row">
+        <h2 class="article-title text-center mt-4">Why is Mental Health Awareness so important?
+        </h2>
+    <div class="col-md-8 mt-3 left">
+      <div class="container">
+        <p class="container-bg p-3">It's impossible to have a conversation about health and wellness without talking about mental health.  Mental health isn't just about having or not having a mental illness. Our well-being is affected by all aspects of our lives, and that, in turn, affects how we experience life, work, and time with our loved ones. Now, the conversation is more critical than ever.</p>
+        <p class="container-bg-2 p-3">
+          Mental health problems are common, with 1 in 6 adults reporting a common mental health disorder, such as anxiety, and there are close to 551,000 people in England with more severe mental illness (SMI) such as schizophrenia or bipolar disorder.  Together with substance misuse, mental illness accounts for 21.3% of the total burden of disease in England.  </p>
+        <p class="container-bg-3 p-3">Often, because of misconceptions about mental health and mental fitness, people often suffer in silence and their conditions go untreated. Talking openly about mental health can reduce the misconceptions and stigma, and can encourage those who are suffering to seek help and find a support network. It's important for caregivers, friends, and loved ones to understand the impact that mental health has on daily life. </p>
+        <p class="container-bg-4 p-3">Mental health awareness is the ongoing effort to reduce the stigma around mental illness and mental health conditions by sharing our personal experiences. Mental health awareness is an important social movement to both improve understanding and increase access to healthcare. Mental health problems and suicide can be preventable. Promoting good mental health will impact on physical health and many other aspects of people’s lives.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 float-right mt-3 h4">
+      <div class="container container-bg p-2">
+        <p  class="container-bg-3 mt-4 p-3">If there is someone in your life struggling with their mental health, the best thing you can do is reach out and start a conversation. 
+        </p>
+      </div>
+      <div class="container container-bg p-2">
+        <p class="container-bg-2 p-3">Educate yourself on the realities of living with mental health issues and confront any feeling of stigma or judgment you may have.
+      </div>
+      <div class="container container-bg p-2">
+        <p class="container-bg-4 p-3">Just supporting those in your life can spread the message of awareness and acceptance.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
