@@ -13,14 +13,14 @@
     <div class="row">
         <div class="col-md-8 mt-3 left">
             <div class="container container-bg">
-                <form method="POST" class="form-bg">
+                <form enctype="multipart/form-data" method="POST" class="form-bg">
                     {% csrf_token %}
                     <fieldset class="form-group">
-                        <legend class="border-bottom mb-4 article-title">Contact Us</legend>
+                        <legend class="border-bottom mb-4 article-title">New Post</legend>
                         {{ form | crispy }}
                     </fieldset>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">Post</button>
                     </div>
                 </form>
             </div>
