@@ -17,7 +17,7 @@
                 <div class="image-container">
                     {% if "placeholder" in post.featured_image.url %}
                     <img class="card-img-top"
-                        src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1677098017/static/media/mental_health.80775316a494.jpg">
+                        src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1678820806/static/media/blog_image_two.52b88ed49b8a.jpg">
                     {% else %}
                     <img class="card-img-top" src=" {{ post.featured_image.url }}">
                     {% endif %}
@@ -70,46 +70,37 @@
                         <div>
                             {% with comments.count as total_comments %}
                             <strong class="text-secondary"><i class="far fa-comments"></i> Total comments -
-                                <!-- Our total_comments variable goes before the closing strong tag -->
                                 {{ total_comments }}</strong>
                             {% endwith %}
                         </div>
                         <div>
-                            <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                             {% for comment in comments %}
                             <div class="comments">
                                 <p class="font-weight-bold mt-3">
-                                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                                     {{ comment.name }}
                                     <span class=" text-muted font-weight-normal">
-                                        <!-- The comment's created date goes here -->
                                         {{ comment.created_on }}
                                     </span> wrote:
                                 </p>
-                                <!-- The body of the comment goes before the | -->
-                                {{ comment.body | linebreaks }}
+                                {{ comment.body | safe | linebreaks  }}
                             </div>
-                            <!-- Our for loop ends here -->
                             {% endfor %}
+                        </div>  
+                        <!-- {% if commented %}
+                        <div class="alert alert-success" role="alert">
+                            Your comment is awaiting approval
                         </div>
-                        <div>
-                            {% if commented %}
-                            <div class="alert alert-success" role="alert">
-                                Your comment is awaiting approval
-                            </div>
-                            {% else %}
-                            {% if user.is_authenticated %}
-        
+                        {% else %}                      -->
+                            {% if user.is_authenticated %}      
                             <h3 class="article-title">Leave a comment</h3>
                             <p>Posting as: {{ user.username }}</p>
                             <form method="post" style="margin-top: 1.3em;">
-                                {{ comment_form | crispy }}
+                                {{ comment_form | crispy | safe }}
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                            {% endif %}
-                            {% endif %}
-                        </div>
+                            </form>                    
+                            {% endif %}  
+                            <!-- {% endif %}                           -->
                     </div>
                 </div>
             </article>
@@ -118,3 +109,4 @@
     </div>
 </div>
 {% endblock content %}
+

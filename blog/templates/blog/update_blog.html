@@ -16,7 +16,7 @@
                 {% csrf_token %}
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-3 article-title">Update Post</legend>
-                    {{ form | crispy }}
+                    {{ form | crispy | safe }}
                 </fieldset>
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Update</button>
