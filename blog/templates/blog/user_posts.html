@@ -20,19 +20,17 @@
         <div class="image-container">
           {% if "placeholder" in post.featured_image.url %}
           <img class="card-img-top"
-          src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1678820806/static/media/blog_image_two.52b88ed49b8a.jpg">
+            src="https://res.cloudinary.com/dq0myfpd3/image/upload/v1678820805/static/media/blog_image_one.87e70cb6f22f.jpg">
           {% else %}
           <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }} Image">
           {% endif %}
-        </div>
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
           </div>
-          <h2><a class="article-title" href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content|safe }}</p>
-        </div>
       </article>
       {% endfor %}
     </div>

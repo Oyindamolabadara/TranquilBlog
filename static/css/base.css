@@ -69,3 +69,49 @@ input.submitbutton.ripplelink {
     margin-bottom: 16px;
     border-radius: 5px;
 }
+
+.hero-image {
+    position: relative;
+  }
+  
+  .cover-text {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .hero-text-overlay{
+    top: 0;
+	left: 0;
+	position: fixed;
+    border-radius: 5px;
+    padding: 10px 15px;
+	background-color: #FFCDD9;
+    color: #1300C1;
+	z-index: -1;
+  }
+
+  .see-more-button {
+    background: #1300C1;
+    color: white;
+    min-width: 200px;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-delay: 4s;
+  }
+
+  /* media queries */
+
+@media screen and (max-width: 600px) {
+    .cover-text {
+        width: 80%;
+        position: absolute;
+        top: 30%;
+        left: 55%;
+        transform: translate(-50%, -50%);
+      }
+  }
+  
+  
