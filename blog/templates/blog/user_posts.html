@@ -16,7 +16,6 @@
       <h1 class="mb-3 article-title">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
       {% for post in posts %}
       <article class="media content-section">
-        <!-- <img class="rounded-circle article-img" src="{{ post.author.profile.featured_image.url }}"> -->
         <div class="image-container">
           {% if "placeholder" in post.featured_image.url %}
           <img class="card-img-top"

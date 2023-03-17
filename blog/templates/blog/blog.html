@@ -25,7 +25,6 @@
                         {% endif %}
                     </div>
                     <div class="article-metadata">
-                        <!-- <img class="rounded-circle article-img" src="{{ post.author.profile.featured_image.url }}"> -->
                         <a class="mr-2" href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
                         <small class="text-muted">{{ post.created_on|date:"F d, Y" }}</small>
                     </div>
@@ -37,20 +36,19 @@
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
 
-<!--Page Navigation -->
-{% if is_paginated %}
-  <nav aria-label="Page navigation container"></nav>
-  <ul class="pagination justify-content-center">
-    {% if page_obj.has_previous %}
-    <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary m-3">&laquo; PREV </a></li>
-    {% endif %}
-    {% if page_obj.has_next %}
-    <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary m-3"> NEXT &raquo;</a></li>
-    {% endif %}
-  </ul>
-  </nav>
+    <!--Page Navigation -->
+    {% if is_paginated %}
+    <nav aria-label="Page navigation container"></nav>
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary m-3">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary m-3"> NEXT &raquo;</a></li>
+        {% endif %}
+    </ul>
+    </nav>
 </div>
 {% endif %}
 </div>
 {% endblock %}
-
