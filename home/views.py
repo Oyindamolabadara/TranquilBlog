@@ -6,8 +6,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from .forms import ContactForm
 
 
-# Create your views here.
-
 def index(request):
     """ A view to return the index page """
 
@@ -15,6 +13,7 @@ def index(request):
 
 
 def contact(request):
+    """ A view to render the contact form """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():

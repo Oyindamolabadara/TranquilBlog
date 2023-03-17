@@ -6,9 +6,6 @@ html {
 }
 
 body {
-    /* background: url('https://res.cloudinary.com/dq0myfpd3/image/upload/v1677016176/static/media/landing_image.85700e6c575a.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: 100%; */
     color: #000;
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -85,7 +82,6 @@ input.submitbutton.ripplelink {
   .hero-text-overlay{
     top: 0;
 	left: 0;
-	position: fixed;
     border-radius: 5px;
     padding: 10px 15px;
 	background-color: #FFCDD9;
@@ -101,17 +97,3 @@ input.submitbutton.ripplelink {
     animation-duration: 4s;
     animation-delay: 4s;
   }
-
-  /* media queries */
-
-@media screen and (max-width: 600px) {
-    .cover-text {
-        width: 80%;
-        position: absolute;
-        top: 30%;
-        left: 55%;
-        transform: translate(-50%, -50%);
-      }
-  }
-  
-  
