@@ -5,7 +5,7 @@
 
 ### **Live Site:**
 
-[Click here to visit the live site.]( https://tranquilblog.herokuapp.com/)
+[Click here to visit the live site.](https://tranquilblog.herokuapp.com/)
 
 ## **About**
 Tranquil Blog was created to increase awareness of mental health and seeking help. Because of misconceptions and stigma surrounding mental health issues, people often suffer in silence and don't seek treatment for their conditions. Raising community awareness of mental health issues helps eliminate the stigma and makes it easier for people to seek help. This platform aims to be a safe space where users can gain more information on mental health and share their personal experiences. 
