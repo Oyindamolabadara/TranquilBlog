@@ -31,13 +31,11 @@ The [W3C Markup Validator](https://validator.w3.org/ "Link to W3C Markup Validat
 <details>
 <summary>HTML Validation Errors</summary>
 
-![Errors returned](media/readme_images/html_errors_one.png)
-
-![Errors returned](media/readme_images/html_errors_two.png)
+![Errors returned](static/media/readme-images/html-errors.png)
 
 <summary>HTML Validation</summary>
 
-![Validation Results](media/readme_images/html_validation.png)
+![Validation Results](static/media/readme-images/html-validation.png)
 
 </details>
 
@@ -46,48 +44,73 @@ The [W3C Markup Validator](https://validator.w3.org/ "Link to W3C Markup Validat
 
 <summary>CSS Validation</summary>
 
-![CSS Validation](media/readme_images/css_validation.png)
-
-</details>
-
-### **JavaScript Files**
-<details>
-<summary>JavaScript Files - JS Validation</summary>
-
-<summary>bag.html</summary>
-
-![JS validation results - bag.html - postloadjs](media/readme_images/bag.html_validation.png)
-
-<summary>base.html</summary>
-
-![JS validation results - base.html - postloadjs](media/readme_images/base.html_validation.png)
-
-<summary>countryfield.js</summary>
-
-![JS validation results - countryfield.js](media/readme_images/countryfield.js_validation.png)
-
-<summary>quantity_input_script.js</summary>
-
-![JS validation results - quantity_input_script.js](media/readme_images/quantity_input_script_validatio.png)
+![CSS Validation](static/media/readme-images/css-validation.png)
 
 </details>
 
 ### **Python Files**
-The python files were validated using Pep8 Online. However, I was unable to attach their images due to time constraints. 
+<details>
+
+<summary>Blog</summary>
+
+admin.py
+![blog-admin.py](static/media/readme-images/blog-admin.png)
+
+forms.py
+![blog-forms.py](static/media/readme-images/blog-forms.png)
+
+models.py
+![blog-models.py](static/media/readme-images/blog-models.png)
+
+urls.py
+![blog-urls.py](static/media/readme-images/blog-urls.png)
+
+views.py
+![blog-views.py](static/media/readme-images/blog-views.png)
+
+</details>
+
+<details>
+<summary>Home</summary>
+
+forms.py
+![home-forms.py](static/media/readme-images/home-forms.png)
+
+urls.py
+![home-urls.py](static/media/readme-images/home-urls.png)
+
+views.py
+![home-views.py](static/media/readme-images/home-views.png)
+
+</details>
+
+<details>
+<summary>Tranquilblog</summary>
+
+urls.py
+![home-urls.py](static/media/readme-images/tranquilblog-urls.png)
+
+</details>
+
+<details>
+
+<summary>Users</summary>
+
+forms.py
+![users-forms.py](static/media/readme-images/users-forms.png)
+
+models.py
+![users-models.py](static/media/readme-images/users-models.png)
+
+signals.py
+![signals-urls.py](static/media/readme-images/signals.png)
+
+views.py
+![users-views.py](static/media/readme-images/users-views.png)
+
+</details>
 
 ### **Responsive Testing**
 I have tested this project's responsiveness across multiple devices and screen sizes using Google developer tools.
 
 ### **Bugs**
-
-* My app kept on crashing during my initial deployment to Heroku with the error message; "NameError: name 'application' is not defined". After having another pair of eyes to help go through it, I noticed that I missed out on making 'signature.herokuapp.com' a string in allowed host in settings.py.
-* CSS was not loading on browser, even after hard refresh. I checked on the slack channel and found similar issues. It was solved by clearing my browser cache on chrome. 
-* During the process of creating the contact us form, when trying to send a message through Gmail with my app, I got the error message; OSError: [Errno 101] Network is unreachable. I tried testing getting the emails using the terminal, which worked fine. In the tutorial I used, I was instructed to change settings to allow Gmail to use less secure apps. I found out that the setting is no longer available on google. Google updated their security such that there are port restrictions and emails don't work on GitPod anymore.
-* The Django-Summernote editor was not showing in the Admin panel for my content/body, thus I was unable to add any review or comment to the body. In the console, I got the Uncaught Type Error; Cannot read properties of undefined (reading 'summernote'). I figured that the issue was with the iframe in the settings file. It was set to False. When I changed it to True, it worked fine and I was able to use the editor.
-* Another deployment issue was a ProgrammingError; at /blog/ relation "products_product" does not exist. I had to reset the database entirely from the Elephant SQL dashboard and delete all migration files. I created an env.py file to contain the config var variables, then reloaded the data to the database.
-
-    I had to update the DATABASE_URL on my Heroku Config Vars, then got another error from Heroku; cannot overwrite attachment values DATABASE_URL. I was told that I will not be able to remove the DATABASE_URL Heroku config var while I have a Heroku Postgres addon. I temporarily removed the Heroku Postgres addon to update the DATABASE_URL.
-* The secret key had been previously exposed but was recovered and a new one was generated.
-
-
-
