@@ -162,7 +162,7 @@ I choose the Inter and Roboto Slab fonts, as they both maintain great readabilit
 * Lighthouse: used for testing site functionality.
 * W3C Markup Validation Service: used for HTML testing.
 * W3C CSS Validation Service: used for CSS testing
-* PEP8: used for Python file testing.
+* Code Insitute Python Linter: used for Python file testing.
 
 ### **Testing and Code Validation:**
 
