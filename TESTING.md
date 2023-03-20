@@ -27,7 +27,7 @@
 </details><br>
 
 ### **Code Validation**
-The [W3C Markup Validator](https://validator.w3.org/ "Link to W3C Markup Validator Site") service was used to validate the `HTML` and `CSS` code used. The [Code Institute PEP8 Python Validator](http://pep8online.com/ "Link to the PEP8 Python Validator Site") was used to validate the `Python` code used. 
+The [W3C Markup Validator](https://validator.w3.org/ "Link to W3C Markup Validator Site") service was used to validate the `HTML` and `CSS` code used. The Code Institute Python Linter was used to validate the `Python` code used. 
 
 #### **Results:**
 
@@ -125,7 +125,8 @@ views.py
 ### **Unsolved Bugs**
 I had limited time to fix the following. In the first submission, I did not implement these features, hence making it challenging to find a way around it promptly. 
 * The image fields were not showing the current image for the blog and profile. 
-* I was unable to resize the profile images, as adding images with high resolution fills and distorts the whole page. Resizing the image would also have saved space when uploaded on the web server. <br>
+* I was unable to resize the profile images, as adding images with high resolution fills and distorts the whole page. Resizing the image would also have saved space when uploaded on the web server. 
+* Noticed very close to submission that the card text on the landing page was not very responsive on small screen sizes.<br>
 
 ### **Note:**
 The contact form was left in testing mode. The email is sent to the CLI and not to an email inbox, using the Django email backend in settings.py. 
