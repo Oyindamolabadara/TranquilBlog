@@ -242,7 +242,6 @@ Clone this project by following the steps:
 ### Code
 * [Django Tutorials - Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p).
 * Update and Delete blog post - [Codemy](https://www.youtube.com/playlist?list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi).
-* Like/Unlike section - [Coding Tranquility’s](https://codingtranquillity.herokuapp.com/blogpost/2/).
 * Building a blog application - [Django Central](https://djangocentral.com/building-a-blog-application-with-django/).
 * Pagination - [Django Central](https://djangocentral.com/adding-pagination-with-django/).
 * Contact Form - [Ordinary Coders](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend).
