@@ -5,7 +5,7 @@
 [Click here to visit the live site.](https://tranquilblog.herokuapp.com/)
 
 ### **Readme File:**
-[Click here to visit the Readme File.](/README.md)
+[Click here to visit the Readme File.](README.md)
 
 ## **Manual Testing**
  
