@@ -240,6 +240,7 @@ Clone this project by following the steps:
 ## **Credits**
 
 ### Code
+* Code Institute's "I thing Before I Blog" Walkthrough project.
 * [Django Tutorials - Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p).
 * Update and Delete blog post - [Codemy](https://www.youtube.com/playlist?list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi).
 * Building a blog application - [Django Central](https://djangocentral.com/building-a-blog-application-with-django/).
